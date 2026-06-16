@@ -1,7 +1,8 @@
+from enum import Enum as pyEnum
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import String, Boolean, ForeignKey, Enum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from enum import Enum as pyEnum
+
 
 db = SQLAlchemy()
 
@@ -57,10 +58,10 @@ class Vehicle (db.Model):
 class Favorite (db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    user_id: Mapped [int]= mapped_column (ForeignKey ("User.id"))
+    user_id: Mapped [int]= mapped_column (ForeignKey ("user.id"))
     user: Mapped [User] = relationship ()
 
-    character_id: Mapped [int] = mapped_column (ForeignKey ("Character.id"))
+    character_id: Mapped [int] = mapped_column (ForeignKey ("character.id"))
     character: Mapped [Character] = relationship ()
 
     planet_id: Mapped [int] = mapped_column (ForeignKey ("planet.id"))
